@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maxSubarrays(vector<int>& v) {
+        int ans = INT_MAX;
+        for(int i=0;i<v.size();i++){
+            ans &= v[i];
+        }
+        if(ans!=0)return 1;
+        int ct = 0;
+        int d = INT_MAX;
+       // cout<<ans<<" ";
+        for(int i=0;i<v.size();i++){
+            d &= v[i];
+           // cout<<d<<" ";
+            if(d==ans){
+                d = INT_MAX;
+                ct++;
+            }
+        }
+       // if(d!=INT_MAX)ct--;
+        return ct;
+    }
+};
